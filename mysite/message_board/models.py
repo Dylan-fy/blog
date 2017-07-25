@@ -8,4 +8,4 @@ class MessageBoard(models.Model):
     message_create_at = models.DateField(auto_now_add=True, help_text='留言时间')
 
     def __str__(self):
-        return "%s:%s" % (visitor_name, message_create_at)
+        return "%s:%s" % (self.visitor_name, self.message_create_at)

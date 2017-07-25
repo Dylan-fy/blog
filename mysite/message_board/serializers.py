@@ -5,8 +5,8 @@ from .models import MessageBoard
 class MessageBoardSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     visitor_name = serializers.CharField(max_length=30)
-    visitor_message = serializers.TextField()
-    message_create_at = serializers.DateField(auto_now_add=True)
+    visitor_message = serializers.JSONField()
+    message_create_at = serializers.DateField(read_only=True)
 
     def create(self, validated_data):
         return MessageBoard.objects.create(**validated_data)

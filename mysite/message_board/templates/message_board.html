@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>hello</title>
-</head>
-<body>
-HELLO WORLD
-</body>
+	<head>
+		<title>hello</title>
+		<script type="text/javascript" src='/static/js/libs/jquery-1.10.0.js'></script>
+		<script type="text/javascript">
+		$.getJSON('/message_board/message_imformation/?format=json', function(json){
+		alert("JSON Data: " + json[3].visitor_name);
+		});
+		</script>
+	</head>
+	<body>
+		HELLO WORLD
+		<div id = 'message_main'></div>
+	</body>
 </html>
