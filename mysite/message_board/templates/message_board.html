@@ -4,13 +4,33 @@
 		<title>hello</title>
 		<script type="text/javascript" src='/static/js/libs/jquery-1.10.0.js'></script>
 		<script type="text/javascript">
+		$(document).ready(function(){
 		$.getJSON('/message_board/message_imformation/?format=json', function(json){
-		alert("JSON Data: " + json[3].visitor_name);
+		var message = {};
+		$('#message_json').data('message_json',json);
+		});
+		});
+		$('#message_json').ready(function(){
+		$('#refresh_message').click(function(){
+		var json = $('#message_json').data('message_json');
+		$("#message_main").empty();
+		var divshow = $("#message_main");
+		// document.getElementById("message_main").innerHTML=json[1];
+		// divshow.append(json[1]);
+		for (message in json) {
+			
+			// divshow.append(message.visitor_name);
+		document.getElementById("message_main").innerHTML=json[message].visitor_name + document.getElementById("message_main").innerHTML;
+			// document.getElementById("message_main").innerHTML=message;
+		}
+		});
 		});
 		</script>
 	</head>
 	<body>
 		HELLO WORLD
-		<div id = 'message_main'></div>
+		<div class="hidden" id="message_json"></div>
+		<div id = 'message_main'>1</div>
+		<p id="refresh_message">click here</p>
 	</body>
 </html>
